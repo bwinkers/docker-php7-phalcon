@@ -10,7 +10,8 @@ RUN apt-get update && apt-get install -y \
 
 RUN git clone --depth=1 "git://github.com/phalcon/cphalcon.git" \
   && cd cphalcon/build \
-  && ./install
+  && ./install \
+  && echo 'extension=phalcon.so' >> /etc/php.ini
 
 RUN /etc/init.d/php7.1-fpm start
 
