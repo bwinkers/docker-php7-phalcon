@@ -11,6 +11,11 @@ RUN git clone --depth=1 "git://github.com/phalcon/cphalcon.git" \
 
 RUN echo 'extension=phalcon.so' >> /usr/local/etc/php/php.ini
 
+RUN git clone "git://github.com/phalcon/phalcon-devtools.git" \
+  && cd phalcon-devtools \
+  && ./phalcon.sh \
+  && . /root/.bashrc
+
 COPY src/ /var/www/html/
 
 
