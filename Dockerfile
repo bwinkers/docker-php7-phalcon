@@ -9,8 +9,6 @@ RUN docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql
 
 RUN docker-php-ext-install pdo pdo_pgsql
 
-RUN echo 'extension=pgsql.so' >> /usr/local/etc/php/php.ini
-
 RUN git clone --depth=1 "git://github.com/phalcon/cphalcon.git" \
   && cd cphalcon/build \
   && ./install
