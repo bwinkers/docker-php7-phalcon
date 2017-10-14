@@ -3,7 +3,11 @@ FROM php:7.1-fpm
 MAINTAINER Brian Winkers <bwinkers@gmail.com>
 
 RUN apt-get update && apt-get install -y \
-        git
+        git libpq-dev
+
+RUN docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql
+
+RUN docker-php-ext-install pdo pdo_pgsql
 
 RUN git clone --depth=1 "git://github.com/phalcon/cphalcon.git" \
   && cd cphalcon/build \
