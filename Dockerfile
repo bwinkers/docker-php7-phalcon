@@ -6,7 +6,7 @@ RUN docker-php-source extract \
     && apt-get update && apt-get install -y \
         git libpq-dev libevent-dev libmcrypt-dev libbz2-dev \
     && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
-    && docker-php-ext-install pdo  pdo_mysql pdo_pgsql opcache sockets mcrypt hash bz2 \
+    && docker-php-ext-install pdo  pdo_mysql pdo_pgsql opcache sockets mcrypt hash bz2 mbstring \
     && pecl install event mongodb \
     && docker-php-ext-enable event mongodb \ 
     && git clone --depth=1 "git://github.com/phalcon/cphalcon.git" \
