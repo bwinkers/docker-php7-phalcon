@@ -2,9 +2,9 @@ FROM php:7.1-fpm
 
 MAINTAINER Brian Winkers <bwinkers@gmail.com>
 
-RUN docker-php-source extract \
-    && apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y \
         git libpq-dev libevent-dev libmcrypt-dev libbz2-dev \
+    && docker-php-source extract \
     && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
     && docker-php-ext-install pdo  pdo_mysql pdo_pgsql opcache sockets mcrypt hash bz2 mbstring \
     && pecl install event mongodb \
